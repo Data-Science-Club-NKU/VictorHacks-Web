@@ -55,8 +55,13 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-  		}
+			},
+			fontFamily: {
+				ibmplex: ['IBM Plex Sans', 'sans-serif']
+		  },
+		  backgroundImage: {
+			'viking': "url('https://cdn.pixabay.com/photo/2022/04/14/18/57/warrior-7133071_1280.jpg')",
+		  },
   	}
   },
-  plugins: [require("tailwindcss-animate")],
 } satisfies Config;
