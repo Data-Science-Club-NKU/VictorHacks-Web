@@ -3,6 +3,8 @@
 import { JSX } from "react";
 import DockNavbar from "../components/navBar";
 import Head from "next/head";
+import Tracks from "@/components/tracks";
+
 
 export default function Home(): JSX.Element {
   return (
@@ -16,25 +18,32 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* Include Navbar */}
-      <DockNavbar />
+      <div className="h-screen flex flex-col text-white font-ibmplex">
+        {/* Include Navbar */}
+        <DockNavbar />
 
-      <div className="h-screen bg-viking bg-cover bg-center flex items-center justify-end text-white relative font-ibmplex pr-4">
         {/* Main Content */}
-        <div className="z-10 text-center">
-          <h1 className="text-6xl font-extrabold text-gold">
-            Victor Hacks 2024
-          </h1>
-          <p className="text-2xl mt-4 font-semibold text-white">
-            A Hackathon Fit for Vikings
-          </p>
-          <p className="mt-6 text-lg text-white">
-            Join us on September 13–14 and unleash your inner warrior!
-          </p>
+        <div
+          className="flex-grow flex items-center justify-end text-center px-6 relative bg-cover bg-center"
+          style={{
+            backgroundImage: "url('https://cdn.pixabay.com/photo/2022/04/14/18/57/warrior-7133071_1280.jpg')",
+          }}
+        >
+          <div className="absolute inset-0 bg-opacity-60"></div>
 
-          {/* Email Input Form */}
-          <div className="mt-6 flex justify-center items-center space-x-6">
-            <div>
+          <div className="relative z-10 max-w-md text-center">
+            <h1 className="text-5xl font-extrabold text-gold">
+              Victor Hacks 2024
+            </h1>
+            <p className="text-2xl mt-4 font-semibold text-white">
+              A Hackathon Fit for Vikings
+            </p>
+            <p className="mt-6 text-lg text-white">
+              Join us on September 13–14 and unleash your inner warrior!
+            </p>
+
+            {/* Email Input Form */}
+            <div className="mt-6 flex justify-center items-center">
               <input
                 type="email"
                 placeholder="Your email"
@@ -44,25 +53,25 @@ export default function Home(): JSX.Element {
                 Notify me
               </button>
             </div>
-          </div>
 
-          {/* Sponsorship Info */}
-          <p className="mt-8 text-sm text-white">
-            Interested in sponsoring us? Fill out{" "}
-            <a
-              href="https://www.victorhacks.org/sponsor"
-              className="underline text-gold hover:text-white"
-            >
-              this interest form
-            </a>{" "}
-            or reach out at{" "}
-            <a
-              href="mailto:sponsor@victorhacks.org"
-              className="underline text-gold hover:text-white"
-            >
-              sponsor@victorhacks.org
-            </a>.
-          </p>
+            {/* Sponsorship Info */}
+            <p className="mt-8 text-sm text-white">
+              Interested in sponsoring us? Fill out{" "}
+              <a
+                href="https://www.victorhacks.org/sponsor"
+                className="underline text-gold hover:text-white"
+              >
+                this interest form
+              </a>{" "}
+              or reach out at{" "}
+              <a
+                href="mailto:sponsor@victorhacks.org"
+                className="underline text-gold hover:text-white"
+              >
+                sponsor@victorhacks.org
+              </a>.
+            </p>
+          </div>
         </div>
 
         {/* Footer Viking Logo */}
@@ -74,6 +83,9 @@ export default function Home(): JSX.Element {
           />
         </div>
       </div>
+       <div>
+      <Tracks />
+    </div>
     </>
   );
 }

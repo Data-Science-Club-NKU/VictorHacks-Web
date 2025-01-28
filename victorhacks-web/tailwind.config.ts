@@ -55,13 +55,35 @@ export default {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
-			},
-			fontFamily: {
-				ibmplex: ['IBM Plex Sans', 'sans-serif']
-		  },
-		  backgroundImage: {
-			'viking': "url('https://cdn.pixabay.com/photo/2022/04/14/18/57/warrior-7133071_1280.jpg')",
-		  },
+  		},
+  		fontFamily: {
+  			ibmplex: [
+  				'IBM Plex Sans',
+  				'sans-serif'
+  			]
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+			}
   	}
   },
 } satisfies Config;
