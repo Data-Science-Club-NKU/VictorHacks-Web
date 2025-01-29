@@ -5,6 +5,8 @@ import DockNavbar from "../components/navBar";
 import Head from "next/head";
 import Tracks from "@/components/tracks";
 import { Sponsors } from "@/components/sponsors";
+import { FAQ } from "@/components/faq";
+import { Footer } from "@/components/footer";
 
 
 export default function Home(): JSX.Element {
@@ -32,8 +34,8 @@ export default function Home(): JSX.Element {
         >
           <div className="absolute inset-0 bg-opacity-60"></div>
 
-          <div className="relative z-10 max-w-md text-center">
-            <h1 className="text-5xl font-extrabold text-gold">
+          <div className="relative z-10 max-w-md text-center font-ibmplex">
+            <h1 className="text-5xl font-Tomorrow font-light text-gold">
               Victor Hacks 2024
             </h1>
             <p className="text-2xl mt-4 font-semibold text-white">
@@ -89,7 +91,13 @@ export default function Home(): JSX.Element {
       </div>
       <div>
       <Sponsors />
-    </div>
+      </div>
+       <div>
+      <FAQ />
+      </div>
+      <div>
+        <Footer />
+      </div>
     </>
   );
 }
