@@ -47,7 +47,7 @@ const SponsorCard = ({ img, name }: { img: string; name: string }) => {
 
 export function Sponsors() {
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden rounded-lg border bg-background p-10 md:shadow-xl">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden m-6">
       <h1 className="mb-6 text-5xl font-Tomorrow font-light uppercase text-gray-900 dark:text-white">
         SPONSORS
       </h1>

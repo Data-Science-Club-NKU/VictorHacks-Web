@@ -36,7 +36,7 @@ const Tracks = (): JSX.Element => {
           squareSize={4}
           gridGap={6}
           color="#60A5FA"
-          maxOpacity={0.5}
+          maxOpacity={0.3}
           flickerChance={0.1}
           height={1000} // Keep grid height small for horizontal focus
           width={2000} // Ensure it spans the entire width
