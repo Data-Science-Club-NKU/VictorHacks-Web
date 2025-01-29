@@ -60,6 +60,10 @@ export default {
   			ibmplex: [
   				'IBM Plex Sans',
   				'sans-serif'
+  			],
+  			Tomorrow: [
+  				'Tomorrow',
+  				'serif'
   			]
   		},
   		keyframes: {
@@ -78,12 +82,30 @@ export default {
   				to: {
   					height: '0'
   				}
+  			},
+  			marquee: {
+  				from: {
+  					transform: 'translateX(0)'
+  				},
+  				to: {
+  					transform: 'translateX(calc(-100% - var(--gap)))'
+  				}
+  			},
+  			'marquee-vertical': {
+  				from: {
+  					transform: 'translateY(0)'
+  				},
+  				to: {
+  					transform: 'translateY(calc(-100% - var(--gap)))'
+  				}
   			}
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
-			}
+  			'accordion-up': 'accordion-up 0.2s ease-out',
+  			marquee: 'marquee var(--duration) infinite linear',
+  			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite'
+  		}
   	}
   },
 } satisfies Config;

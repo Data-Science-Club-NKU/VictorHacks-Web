@@ -4,6 +4,7 @@ import { JSX } from "react";
 import DockNavbar from "../components/navBar";
 import Head from "next/head";
 import Tracks from "@/components/tracks";
+import { Sponsors } from "@/components/sponsors";
 
 
 export default function Home(): JSX.Element {
@@ -85,6 +86,9 @@ export default function Home(): JSX.Element {
       </div>
        <div>
       <Tracks />
+      </div>
+      <div>
+      <Sponsors />
     </div>
     </>
   );

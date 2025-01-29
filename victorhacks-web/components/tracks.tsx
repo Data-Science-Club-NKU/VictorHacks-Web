@@ -41,7 +41,7 @@ const Tracks = (): JSX.Element => {
 
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center text-white px-6">
-        <h1 className="text-5xl font-extrabold text-black mb-10">TRACKS</h1>
+        <h1 className="text-5xl font-light font-Tomorrow text-black mb-10">TRACKS</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 max-w-4xl w-full">
           {tracks.map((track, index) => (
             <div
