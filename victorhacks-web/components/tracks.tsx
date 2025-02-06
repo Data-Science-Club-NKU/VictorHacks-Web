@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect } from "react";
 import { FlickeringGrid } from "./ui/flickering-grid";
 import { OrbitingCircles } from "./ui/orbiting-circles";
 import { JSX } from "react";
@@ -27,6 +28,19 @@ const tracks = [
 ];
 
 const Tracks = (): JSX.Element => {
+  // Optional: Dynamically hide orbiting circles based on screen size
+  const [showOrbitingCircles, setShowOrbitingCircles] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setShowOrbitingCircles(window.innerWidth >= 640); // Hide on small screens
+    };
+
+    handleResize(); // Check on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <div className="relative w-full h-full py-20 overflow-hidden">
       {/* Flickering Horizontal Background */}
@@ -46,7 +60,7 @@ const Tracks = (): JSX.Element => {
       {/* Content */}
       <div className="relative z-10 flex flex-col items-center text-center text-white px-2">
         <h1 className="text-5xl font-light font-Tomorrow bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black mb-10">TRACKS</h1>
-        <div className="flex flex-row justify-between items-center max-w-7xl w-full px-10">
+        <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl w-full px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 flex-grow">
             {tracks.map((track, index) => (
               <div
@@ -58,30 +72,36 @@ const Tracks = (): JSX.Element => {
               </div>
             ))}
           </div>
-          <div className="flex justify-center items-center w-[400px] h-[400px] relative px-16 ml-32">
-            <div className="absolute w-[280px] h-[280px]  border-gray-600 rounded-full flex items-center justify-center">
-              <span className="text-4xl font-bold bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black">Build & Innovate</span>
+
+          {/* Orbiting Circles - Hide on small screens */}
+          {showOrbitingCircles && (
+            <div className="hidden sm:flex justify-center items-center w-[400px] h-[400px] relative px-16 ml-32">
+              <div className="absolute w-[280px] h-[280px] border-gray-600 rounded-full flex items-center justify-center">
+                <span className="text-4xl font-bold bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black">
+                  Build & Innovate
+                </span>
+              </div>
+              <OrbitingCircles iconSize={50} radius={160} speed={1.2}>
+                <VscAzure size={50} className="text-blue-500" />
+                <FaAws size={50} className="text-yellow-500" />
+                <SiPytorch size={50} className="text-orange-500" />
+                <SiTensorflow size={50} className="text-red-500" />
+                <SiPython size={50} className="text-blue-400" />
+                <SiJavascript size={50} className="text-yellow-300" />
+                <SiNextdotjs size={50} className="text-black" />
+              </OrbitingCircles>
+              <OrbitingCircles iconSize={40} radius={210} speed={1.5} reverse>
+                <SiDocker size={40} className="text-blue-500" />
+                <SiKubernetes size={40} className="text-blue-600" />
+                <SiPostgresql size={40} className="text-blue-700" />
+                <SiMongodb size={40} className="text-green-500" />
+                <SiGraphql size={40} className="text-pink-500" />
+                <SiTypescript size={40} className="text-blue-400" />
+                <SiFigma size={40} className="text-purple-500" />
+                <SiReact size={50} className="text-blue-400" />
+              </OrbitingCircles>
             </div>
-            <OrbitingCircles iconSize={50} radius={160} speed={1.2}>
-              <VscAzure size={50} className="text-blue-500" />
-              <FaAws size={50} className="text-yellow-500" />
-              <SiPytorch size={50} className="text-orange-500" />
-              <SiTensorflow size={50} className="text-red-500" />
-              <SiPython size={50} className="text-blue-400" />
-              <SiJavascript size={50} className="text-yellow-300" />
-              <SiNextdotjs size={50} className="text-black" />
-            </OrbitingCircles>
-            <OrbitingCircles iconSize={40} radius={210} speed={1.5} reverse>
-              <SiDocker size={40} className="text-blue-500" />
-              <SiKubernetes size={40} className="text-blue-600" />
-              <SiPostgresql size={40} className="text-blue-700" />
-              <SiMongodb size={40} className="text-green-500" />
-              <SiGraphql size={40} className="text-pink-500" />
-              <SiTypescript size={40} className="text-blue-400" />
-              <SiFigma size={40} className="text-purple-500" />
-              <SiReact size={50} className="text-blue-400" />
-            </OrbitingCircles>
-          </div>
+          )}
         </div>
       </div>
     </div>

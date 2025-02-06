@@ -7,6 +7,7 @@ import Tracks from "@/components/tracks";
 import { Sponsors } from "@/components/sponsors";
 import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer";
+import Mentor from "@/components/mentor";
 
 
 export default function Home(): JSX.Element {
@@ -42,7 +43,7 @@ export default function Home(): JSX.Element {
               A Hackathon Fit for Vikings
             </p>
             <p className="mt-6 text-lg text-white">
-              Join us on September 13–14 and unleash your inner warrior!
+              Join us on April _–_ and unleash your inner warrior!
             </p>
 
             {/* Email Input Form */}
@@ -92,7 +93,10 @@ export default function Home(): JSX.Element {
       <div>
       <Sponsors />
       </div>
-       <div>
+      <div>
+        <div>
+          <Mentor/>
+        </div>
       <FAQ />
       </div>
       <div>

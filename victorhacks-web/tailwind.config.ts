@@ -106,6 +106,14 @@ export default {
   				'100%': {
   					transform: 'rotate(calc(var(--angle) * 1deg + 360deg)) translateY(calc(var(--radius) * 1px)) rotate(calc((var(--angle) * -1deg) - 360deg))'
   				}
+  			},
+  			pulse: {
+  				'0%, 100%': {
+  					boxShadow: '0 0 0 0 var(--pulse-color)'
+  				},
+  				'50%': {
+  					boxShadow: '0 0 0 8px var(--pulse-color)'
+  				}
   			}
   		},
   		animation: {
@@ -113,7 +121,8 @@ export default {
   			'accordion-up': 'accordion-up 0.2s ease-out',
   			marquee: 'marquee var(--duration) infinite linear',
   			'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
-  			orbit: 'orbit calc(var(--duration)*1s) linear infinite'
+  			orbit: 'orbit calc(var(--duration)*1s) linear infinite',
+  			pulse: 'pulse var(--duration) ease-out infinite'
   		}
   	}
   },
