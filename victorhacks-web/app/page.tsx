@@ -22,7 +22,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-screen flex flex-col text-white font-ibmplex">
+      <div className="h-screen flex flex-col text-white font-ibmplex">        
         {/* Include Navbar */}
         <DockNavbar />
 
@@ -62,7 +62,7 @@ export default function Home(): JSX.Element {
             <p className="mt-8 text-sm text-white">
               Interested in sponsoring us? Fill out{" "}
               <a
-                href="https://www.victorhacks.org/sponsor"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdEPBSPX4vkd1ks_YSnUGZD6PTcYqnCpgCylNRDot0kwKdEMg/viewform?usp=dialog"
                 className="underline text-gold hover:text-white"
               >
                 this interest form
@@ -87,17 +87,20 @@ export default function Home(): JSX.Element {
           />
         </div>
       </div>
-       <div>
-      <Tracks />
+      <div id = "tracks">
+        <Tracks />
       </div>
-      <div>
-      <Sponsors />
+  
+      <div id="sponsors">
+        <Sponsors/>
       </div>
       <div>
         <div>
           <Mentor/>
         </div>
-      <FAQ />
+      </div>
+      <div id="faq">
+        <FAQ />
       </div>
       <div>
         <Footer />

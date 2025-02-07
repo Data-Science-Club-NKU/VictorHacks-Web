@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function RegistrationForm() {
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white p-8">
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white p-8 ">
       <Card className="w-full max-w-md p-6 bg-gray-800 shadow-lg rounded-lg">
         <CardHeader>
           <CardTitle className="text-center text-2xl font-bold">MLH Hackathon Registration</CardTitle>
