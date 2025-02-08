@@ -7,6 +7,7 @@ import Tracks from "@/components/tracks";
 import { Sponsors } from "@/components/sponsors";
 import { FAQ } from "@/components/faq";
 import { Footer } from "@/components/footer";
+import Mentor from "@/components/mentor";
 
 
 export default function Home(): JSX.Element {
@@ -21,7 +22,7 @@ export default function Home(): JSX.Element {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="h-screen flex flex-col text-white font-ibmplex">
+      <div className="h-screen flex flex-col text-white font-ibmplex">        
         {/* Include Navbar */}
         <DockNavbar />
 
@@ -42,7 +43,7 @@ export default function Home(): JSX.Element {
               A Hackathon Fit for Vikings
             </p>
             <p className="mt-6 text-lg text-white">
-              Join us on September 13–14 and unleash your inner warrior!
+              Join us on April _–_ and unleash your inner warrior!
             </p>
 
             {/* Email Input Form */}
@@ -61,7 +62,7 @@ export default function Home(): JSX.Element {
             <p className="mt-8 text-sm text-white">
               Interested in sponsoring us? Fill out{" "}
               <a
-                href="https://www.victorhacks.org/sponsor"
+                href="https://docs.google.com/forms/d/e/1FAIpQLSdEPBSPX4vkd1ks_YSnUGZD6PTcYqnCpgCylNRDot0kwKdEMg/viewform?usp=dialog"
                 className="underline text-gold hover:text-white"
               >
                 this interest form
@@ -86,14 +87,20 @@ export default function Home(): JSX.Element {
           />
         </div>
       </div>
-       <div>
-      <Tracks />
+      <div id = "tracks">
+        <Tracks />
+      </div>
+  
+      <div id="sponsors">
+        <Sponsors/>
       </div>
       <div>
-      <Sponsors />
+        <div>
+          <Mentor/>
+        </div>
       </div>
-       <div>
-      <FAQ />
+      <div id="faq">
+        <FAQ />
       </div>
       <div>
         <Footer />
