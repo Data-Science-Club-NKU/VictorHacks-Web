@@ -17,6 +17,7 @@ const navItems: NavItem[] = [
   { name: 'Sponsors', href: '#sponsors' },
   { name: 'FAQ', href: '#faq' },
   { name: 'Apply', href: '/register', newTab: true },
+  { name: 'Competitions', href: '/Dashboard', newTab: true },
 ];
 
 const DockNavbar = () => {

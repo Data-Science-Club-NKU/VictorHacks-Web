@@ -10,7 +10,7 @@ export default function Mentor() {
       }}
     >
       <div className="absolute top-4 left-4 flex flex-col">
-        <h1 className="text-5xl font-bold mb-4 font-Tomorrow font-medium">Become a mentor!</h1>
+        <h1 className="text-5xl mb-4 font-Tomorrow font-medium">Become a mentor!</h1>
         <PulsatingButton className="w-fit px-6 py-2 rounded-full mx-auto">
           <a href="https://forms.gle/R7HMizRmsPzsc3VZ8">Apply Now</a>
         </PulsatingButton>

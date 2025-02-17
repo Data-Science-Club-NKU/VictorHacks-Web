@@ -1,5 +1,8 @@
 import { cn } from "@/lib/utils";
 import { Marquee } from "./ui/marquee";
+import { TextReveal } from "@/components/ui/text-reveal";
+import { PulsatingButton } from "./ui/pulsating-button";
+
 
 const sponsors = [
   {
@@ -32,14 +35,14 @@ const SponsorCard = ({ img, name }: { img: string; name: string }) => {
   return (
     <figure
       className={cn(
-        "relative w-64 cursor-pointer overflow-hidden rounded-xl border p-4",
+        "relative w-40 cursor-pointer overflow-hidden rounded-md border p-2 transition-transform duration-300 hover:scale-105",
         "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
         "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]"
       )}
     >
-      <div className="flex flex-col items-center justify-center p-4">
-        <img className="h-16" alt={name} src={img} />
-        <p className="mt-2 text-sm font-medium dark:text-white">{name}</p>
+      <div className="flex flex-col items-center justify-center p-2">
+        <img className="h-10" alt={name} src={img} />
+        <p className="mt-1 text-xs font-medium dark:text-white">{name}</p>
       </div>
     </figure>
   );
@@ -47,15 +50,24 @@ const SponsorCard = ({ img, name }: { img: string; name: string }) => {
 
 export function Sponsors() {
   return (
-    <div className="relative flex flex-col items-center justify-center overflow-hidden m-6">
-      <h1 className="mb-6 text-5xl font-Tomorrow font-light uppercase text-gray-900 dark:text-white">
+    <div className="relative flex flex-col items-center justify-center overflow-hidden m-2 min-h-24">
+      <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-Tomorrow font-light uppercase text-gray-900 dark:text-white">
         SPONSORS
       </h1>
-      <Marquee pauseOnHover className="[--duration:15s]">
+     <Marquee pauseOnHover className="[--duration:10s] pt-8 mt-20">
         {sponsors.map((sponsor) => (
           <SponsorCard key={sponsor.name} {...sponsor} />
         ))}
       </Marquee>
+      <div className=" text-center p-8 mb-2">
+        <PulsatingButton className="w-fit px-6 py-2 mt-20 rounded-md mx-auto">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdEPBSPX4vkd1ks_YSnUGZD6PTcYqnCpgCylNRDot0kwKdEMg/viewform?usp=dialog">Apply Now</a>
+        </PulsatingButton>
+        <TextReveal
+          text="🚀 Fuel Innovation, Empower Talent! Sponsor Victor Hacks and connect with the brightest minds shaping the future of tech."
+          className=" text-gray-800 dark:text-gray-300 mt-24"
+        />
+      </div>
     </div>
   );
 }

@@ -28,9 +28,9 @@ export default function Home(): JSX.Element {
 
         {/* Main Content */}
         <div
-          className="flex-grow flex items-center justify-end text-center px-6 relative bg-cover bg-center"
+          className="flex-grow flex items-end justify-center text-center px-6 relative bg-cover bg-center"
           style={{
-            backgroundImage: "url('https://cdn.pixabay.com/photo/2022/04/14/18/57/warrior-7133071_1280.jpg')",
+            backgroundImage: "url('https://i.redd.it/2y2k540v3f171.jpg')",
           }}
         >
           <div className="absolute inset-0 bg-opacity-60"></div>
@@ -43,7 +43,7 @@ export default function Home(): JSX.Element {
               A Hackathon Fit for Vikings
             </p>
             <p className="mt-6 text-lg text-white">
-              Join us on April _–_ and unleash your inner warrior!
+              Join us on April 19 – 20 and unleash your inner warrior!
             </p>
 
             {/* Email Input Form */}
@@ -59,7 +59,7 @@ export default function Home(): JSX.Element {
             </div>
 
             {/* Sponsorship Info */}
-            <p className="mt-8 text-sm text-white">
+            <p className="mb-24 mt-8 text-sm text-white">
               Interested in sponsoring us? Fill out{" "}
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSdEPBSPX4vkd1ks_YSnUGZD6PTcYqnCpgCylNRDot0kwKdEMg/viewform?usp=dialog"

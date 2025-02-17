@@ -58,7 +58,7 @@ const Tracks = (): JSX.Element => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center text-white px-2">
+      <div className="relative z-10 flex flex-col items-center text-center text-white px-2 mr-12">
         <h1 className="text-5xl font-light font-Tomorrow bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black mb-10">TRACKS</h1>
         <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl w-full px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 flex-grow">
@@ -75,9 +75,9 @@ const Tracks = (): JSX.Element => {
 
           {/* Orbiting Circles - Hide on small screens */}
           {showOrbitingCircles && (
-            <div className="hidden sm:flex justify-center items-center w-[400px] h-[400px] relative px-16 ml-32">
+            <div className="hidden sm:flex justify-center items-center w-[400px] h-[400px] relative px-24 ml-40">
               <div className="absolute w-[280px] h-[280px] border-gray-600 rounded-full flex items-center justify-center">
-                <span className="text-4xl font-bold bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black">
+                <span className="text-4xl pl-2 font-bold bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black">
                   Build & Innovate
                 </span>
               </div>
