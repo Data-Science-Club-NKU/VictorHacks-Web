@@ -1,20 +1,49 @@
 "use client";
 import { useState } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Avatar,
+  Tabs,
+  Tab,
+  Card,
+  CardBody,
+} from "@nextui-org/react";
 
 export default function CompetitionPage() {
   const [selectedTab, setSelectedTab] = useState<string>("overview");
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen p-2 m-8">
       {/* Navbar */}
-      <Navbar isBordered className="bg-white shadow-md">
+      <Navbar isBordered className="shadow-md bg-slate-50 rounded-full p-2">
         <NavbarBrand>
-          <h1 className="text-xl font-bold">AI Mathematical Olympiad</h1>
+          <h1 className="text-xl font-bold p-2">AI Mathematical Olympiad</h1>
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button color="primary">Join Competition</Button>
+            <Dropdown>
+              <DropdownTrigger>
+               <Avatar 
+  src="/public/image.jpg" 
+  size="md" 
+  className="cursor-pointer" 
+  alt="User Profile"
+/>
+
+              </DropdownTrigger>
+              <DropdownMenu aria-label="User Menu">
+                <DropdownItem key="profile">Profile</DropdownItem>
+                <DropdownItem key="settings">Settings</DropdownItem>
+                <DropdownItem key="logout" color="danger">Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
@@ -28,16 +57,17 @@ export default function CompetitionPage() {
         <Tabs
           aria-label="Competition Sections"
           selectedKey={selectedTab}
-          onSelectionChange={(key) => setSelectedTab(String(key))} // ✅ Fix: Convert Key to string
+          onSelectionChange={(key) => setSelectedTab(String(key))}
           className="mt-4"
         >
-          <Tab key="overview" title="Overview"></Tab>
-          <Tab key="data" title="Data"></Tab>
-          <Tab key="code" title="Code"></Tab>
-          <Tab key="models" title="Models"></Tab>
-          <Tab key="discussion" title="Discussion"></Tab>
-          <Tab key="leaderboard" title="Leaderboard"></Tab>
-          <Tab key="rules" title="Rules"></Tab>
+          {["overview", "data", "code", "models", "discussion", "leaderboard", "rules"].map((key) => (
+            <Tab
+              key={key}
+              title={key.charAt(0).toUpperCase() + key.slice(1)}
+              className={`px-4 py-2 text-lg font-semibold transition-all duration-200 
+                ${selectedTab === key ? "rounded-t-full border-b-4 border-black" : "text-gray-600 hover:text-black"}`}
+            />
+          ))}
         </Tabs>
 
         {/* Dynamic Content */}
