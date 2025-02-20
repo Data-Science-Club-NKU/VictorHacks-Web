@@ -1,9 +1,25 @@
 "use client";
 import { useState } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Tabs, Tab, Card, CardBody } from "@nextui-org/react";
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Tabs, Tab } from "@nextui-org/react";
+import DataTab from "./tabs/data";
+import LeaderboardTab from "./tabs/leaderboard";
+import RulesTab from "./tabs/rules";
 
 export default function CompetitionPage() {
-  const [selectedTab, setSelectedTab] = useState<string>("overview");
+  const [selectedTab, setSelectedTab] = useState<string>("data");
+
+  const renderTabContent = () => {
+    switch (selectedTab) {
+      case "data":
+        return <DataTab />;
+      case "leaderboard":
+        return <LeaderboardTab />;
+      case "rules":
+        return <RulesTab />;
+      default:
+        return <DataTab />;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-100">
@@ -28,38 +44,17 @@ export default function CompetitionPage() {
         <Tabs
           aria-label="Competition Sections"
           selectedKey={selectedTab}
-          onSelectionChange={(key) => setSelectedTab(String(key))} // ✅ Fix: Convert Key to string
+          onSelectionChange={(key) => setSelectedTab(String(key))}
           className="mt-4"
         >
-          <Tab key="overview" title="Overview"></Tab>
-          <Tab key="data" title="Data"></Tab>
-          <Tab key="code" title="Code"></Tab>
-          <Tab key="models" title="Models"></Tab>
-          <Tab key="discussion" title="Discussion"></Tab>
-          <Tab key="leaderboard" title="Leaderboard"></Tab>
-          <Tab key="rules" title="Rules"></Tab>
+          <Tab key="data" title="Data" />
+          <Tab key="leaderboard" title="Leaderboard" />
+          <Tab key="rules" title="Rules" />
         </Tabs>
 
         {/* Dynamic Content */}
         <div className="mt-6">
-          {selectedTab === "overview" && (
-            <Card>
-              <CardBody>
-                <h2 className="text-xl font-semibold">Overview</h2>
-                <p>This competition challenges participants to solve math problems using AI models.</p>
-              </CardBody>
-            </Card>
-          )}
-
-          {selectedTab === "data" && (
-            <Card>
-              <CardBody>
-                <h2 className="text-xl font-semibold">Dataset Description</h2>
-                <p>The competition data comprises 110 mathematics problems similar to those of the AIME.</p>
-                <p>The answer to each problem is a non-negative integer between 0 and 999.</p>
-              </CardBody>
-            </Card>
-          )}
+          {renderTabContent()}
         </div>
       </div>
     </div>
