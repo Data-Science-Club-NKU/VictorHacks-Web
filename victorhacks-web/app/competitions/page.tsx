@@ -1,9 +1,20 @@
 "use client";
 import { useState } from "react";
-import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Button, Tabs, Tab } from "@nextui-org/react";
-import DataTab from "./tabs/data";
-import LeaderboardTab from "./tabs/leaderboard";
-import RulesTab from "./tabs/rules";
+import {
+  Navbar,
+  NavbarBrand,
+  NavbarContent,
+  NavbarItem,
+  Dropdown,
+  DropdownTrigger,
+  DropdownMenu,
+  DropdownItem,
+  Avatar,
+  Tabs,
+  Tab,
+  Card,
+  CardBody,
+} from "@nextui-org/react";
 
 export default function CompetitionPage() {
   const [selectedTab, setSelectedTab] = useState<string>("data");
@@ -22,15 +33,30 @@ export default function CompetitionPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen p-2 m-8">
       {/* Navbar */}
-      <Navbar isBordered className="bg-white shadow-md">
+      <Navbar isBordered className="shadow-md bg-slate-50 rounded-full p-2">
         <NavbarBrand>
-          <h1 className="text-xl font-bold">AI Mathematical Olympiad</h1>
+          <h1 className="text-xl font-bold p-2">AI Mathematical Olympiad</h1>
         </NavbarBrand>
         <NavbarContent justify="end">
           <NavbarItem>
-            <Button color="primary">Join Competition</Button>
+            <Dropdown>
+              <DropdownTrigger>
+               <Avatar 
+  src="/public/image.jpg" 
+  size="md" 
+  className="cursor-pointer" 
+  alt="User Profile"
+/>
+
+              </DropdownTrigger>
+              <DropdownMenu aria-label="User Menu">
+                <DropdownItem key="profile">Profile</DropdownItem>
+                <DropdownItem key="settings">Settings</DropdownItem>
+                <DropdownItem key="logout" color="danger">Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </NavbarItem>
         </NavbarContent>
       </Navbar>
