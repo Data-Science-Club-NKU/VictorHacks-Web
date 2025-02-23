@@ -37,7 +37,7 @@ export default function DataTab() {
               <Button 
                 color="primary"
                 endContent={<Download size={20} />}
-                onClick={() => handleDownload("training_data.csv")}
+                onClick={() => handleDownload("train.csv")}
               >
                 Download CSV
               </Button>
@@ -52,7 +52,7 @@ export default function DataTab() {
               <Button 
                 color="primary"
                 endContent={<Download size={20} />}
-                onClick={() => handleDownload("test_data.csv")}
+                onClick={() => handleDownload("test.csv")}
               >
                 Download CSV
               </Button>
@@ -67,7 +67,7 @@ export default function DataTab() {
               <Button 
                 color="primary"
                 endContent={<Download size={20} />}
-                onClick={() => handleDownload("submission_format.csv")}
+                onClick={() => handleDownload("Sample_submission.csv")}
               >
                 Download CSV
               </Button>
