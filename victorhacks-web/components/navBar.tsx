@@ -78,7 +78,7 @@ const DockNavbar = () => {
             </Dock>
           </TooltipProvider>
           {isLoaded && (
-            <div className="ml-auto">
+            <div>
               <SignedIn>
                 <UserButton afterSignOutUrl="/" />
               </SignedIn>
