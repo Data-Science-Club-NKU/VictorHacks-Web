@@ -9,7 +9,7 @@ import {
   useSpring,
   useTransform,
 } from "motion/react";
-import React, { PropsWithChildren, useRef } from "react";
+import React, { useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -47,10 +47,10 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
 
     const renderChildren = () => {
       return React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && child.type === DockIcon) {
+        if (React.isValidElement<DockIconProps>(child) && child.type === DockIcon) {
           return React.cloneElement(child, {
-            ...child.props,
-            mouseX: mouseX,
+            ...(child.props as Partial<DockIconProps>),
+            mouseX,
             size: iconSize,
             magnification: iconMagnification,
             distance: iconDistance,
@@ -75,7 +75,7 @@ const Dock = React.forwardRef<HTMLDivElement, DockProps>(
         {renderChildren()}
       </motion.div>
     );
-  },
+  }
 );
 
 Dock.displayName = "Dock";
@@ -88,7 +88,6 @@ export interface DockIconProps
   mouseX?: MotionValue<number>;
   className?: string;
   children?: React.ReactNode;
-  props?: PropsWithChildren;
 }
 
 const DockIcon = ({
@@ -112,7 +111,7 @@ const DockIcon = ({
   const sizeTransform = useTransform(
     distanceCalc,
     [-distance, 0, distance],
-    [size, magnification, size],
+    [size, magnification, size]
   );
 
   const scaleSize = useSpring(sizeTransform, {
@@ -127,7 +126,7 @@ const DockIcon = ({
       style={{ width: scaleSize, height: scaleSize, padding }}
       className={cn(
         "flex aspect-square cursor-pointer items-center justify-center rounded-full",
-        className,
+        className
       )}
       {...props}
     >
