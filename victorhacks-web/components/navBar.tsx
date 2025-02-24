@@ -1,103 +1,94 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-import { useSignOut } from 'react-firebase-hooks/auth';
-import { auth } from '../lib/firebase/config';
-import Link from 'next/link';
-import {
-  ClerkProvider,
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from '@clerk/nextjs'
+
 import { useAuth } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import Link from 'next/link';
+import { Dock, DockIcon } from '@/components/ui/dock';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Separator } from '@/components/ui/separator';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import { HomeIcon, UsersIcon, TrophyIcon, InfoIcon, HelpCircleIcon, UserPlusIcon } from 'lucide-react';
+import { Github, Linkedin } from 'lucide-react';
+import { FaDiscord } from 'react-icons/fa';
 
-
-interface NavItem {
-  name: string;
-  href: string;
-  newTab?: boolean;
-  protected?: boolean;
-}
-
-const navItems: NavItem[] = [
-  { name: 'About', href: '#about' },
-  { name: 'Tracks', href: '#tracks' },
-  { name: 'Sponsors', href: '#sponsors' },
-  { name: 'FAQ', href: '#faq' },
-  { name: 'Apply', href: '/register', newTab: true },
-  { name: 'Competitions', href: '/Dashboard', newTab: true, protected: true },
+const navItems = [
+  { name: 'About', href: '#about', icon: InfoIcon },
+  { name: 'Tracks', href: '#tracks', icon: UsersIcon },
+  { name: 'Sponsors', href: '#sponsors', icon: TrophyIcon },
+  { name: 'FAQ', href: '#faq', icon: HelpCircleIcon },
+  { name: 'Apply', href: '/register', newTab: true, icon: UserPlusIcon },
+  { name: 'Competitions', href: '/Dashboard', newTab: true, protected: true, icon: TrophyIcon },
 ];
 
+const socialLinks = [
+  { name: 'GitHub', href: '#', icon: Github },
+  { name: 'LinkedIn', href: '#', icon: Linkedin },
+  { name: 'Discord', href: '#', icon: FaDiscord },
+];
 
 const DockNavbar = () => {
-  const { isLoaded, userId, sessionId, getToken } = useAuth();
+  const { isLoaded, userId } = useAuth();
 
   return (
     <>
-      {/* MLH Trust Badge */}
-      <a
-        id="mlh-trust-badge"
-        style={{
-          display: 'block',
-          maxWidth: '100px',
-          minWidth: '60px',
-          position: 'fixed',
-          right: '50px',
-          top: '0',
-          width: '10%',
-          zIndex: '10000',
-        }}
-        href="https://mlh.io/na?utm_source=na-hackathon&utm_medium=TrustBadge&utm_campaign=2024-season&utm_content=white"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <img
-          src="https://s3.amazonaws.com/logged-assets/trust-badge/2024/mlh-trust-badge-2024-white.svg"
-          alt="Major League Hacking 2024 Hackathon Season"
-          style={{ width: '100%' }}
-        />
-      </a>
-
-      {/* Navbar */}
-      <nav className="bg-white dark:bg-gray-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-gray-600">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          {/* Navigation Links */}
-          <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
-        <ul className="flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-          {navItems.map((item, index) => (
-            <li key={index}>
-          {item.protected ? (
-            <SignedIn>
-              <Link href={item.href} target={item.newTab ? '_blank' : undefined} className="text-black">
-            {item.name}
-              </Link>
-            </SignedIn>
-          ) : (
-            <Link href={item.href} target={item.newTab ? '_blank' : undefined} className="text-black">
-              {item.name}
-            </Link>
+      <nav className="fixed top-0 left-0 w-full z-50 px-56 flex justify-between items-center">
+        <div className="max-w-screen-xl w-full flex justify-between items-center mx-auto">
+          <div className="hidden md:flex space-x-6">
+            {navItems.map((item, index) => (
+              <SignedIn key={index}>
+                <Link href={item.href} target={item.newTab ? '_blank' : undefined} className="text-white flex items-center space-x-2 hover:text-gray-300 transition">
+                  <item.icon className="size-5 opacity-80" />
+                  <span>{item.name}</span>
+                </Link>
+              </SignedIn>
+            ))}
+          </div>
+          <TooltipProvider>
+            <Dock direction="middle" className="flex justify-start items-center space-x-2">
+              {navItems.map((item) => (
+                <DockIcon key={item.name}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link href={item.href} className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'size-12 rounded-full opacity-90 hover:opacity-100 transition')}>
+                        <item.icon className="size-5" />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{item.name}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </DockIcon>
+              ))}
+              <Separator orientation="vertical" className="h-full" />
+              {socialLinks.map(({ name, href, icon: Icon }) => (
+                <DockIcon key={name}>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Link href={href} className={cn(buttonVariants({ variant: 'ghost', size: 'icon' }), 'size-12 rounded-full opacity-90 hover:opacity-100 transition')}>
+                        <Icon className="size-5" />
+                      </Link>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>{name}</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </DockIcon>
+              ))}
+            </Dock>
+          </TooltipProvider>
+          {isLoaded && (
+            <div className="ml-auto">
+              <SignedIn>
+                <UserButton afterSignOutUrl="/" />
+              </SignedIn>
+              <SignedOut>
+                <SignInButton mode="modal">
+                  <button className="text-white font-Tomorrow bg-primary rounded-full px-5 py-2 mt-8 hover:bg-opacity-80 transition">Sign In</button>
+                </SignInButton>
+              </SignedOut>
+            </div>
           )}
-            </li>
-          ))}
-        </ul>
-          </div>
-
-          {/* User Authentication */}
-          <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            <SignedIn>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                  Sign In
-                </button>
-              </SignInButton>
-            </SignedOut>
-          </div>
         </div>
       </nav>
     </>

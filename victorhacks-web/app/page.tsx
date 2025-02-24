@@ -13,6 +13,7 @@ import Mentor from "@/components/mentor";
 export default function Home(): JSX.Element {
   return (
     <>
+
       <Head>
         <title>Victor Hacks 2024</title>
         <meta
@@ -21,18 +22,23 @@ export default function Home(): JSX.Element {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+                                <DockNavbar />
 
-      <div className="h-screen flex flex-col text-white font-ibmplex">        
-        {/* Include Navbar */}
-        <DockNavbar />
-
-        {/* Main Content */}
+      <div className="h-screen flex flex-col text-white font-ibmplex">  
         <div
+          
           className="flex-grow flex items-end justify-center text-center px-6 relative bg-cover bg-center"
           style={{
             backgroundImage: "url('https://i.redd.it/2y2k540v3f171.jpg')",
           }}
+          
         >
+        {/* Include Navbar */}
+
+        {/* Main Content */}
+
+        
+
           <div className="absolute inset-0 bg-opacity-60"></div>
 
           <div className="relative z-10 max-w-md text-center font-ibmplex">
