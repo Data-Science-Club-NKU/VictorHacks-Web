@@ -13,7 +13,7 @@ import Mentor from "@/components/mentor";
 export default function Home(): JSX.Element {
   return (
     <>
-
+                                <DockNavbar />
       <Head>
         <title>Victor Hacks 2024</title>
         <meta
@@ -22,7 +22,6 @@ export default function Home(): JSX.Element {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-                                <DockNavbar />
 
       <div className="h-screen flex flex-col text-white font-ibmplex">  
         <div

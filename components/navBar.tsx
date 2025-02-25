@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { useAuth } from "@clerk/nextjs";
-import { SignInButton } from "@clerk/nextjs";
+import { useAuth, SignInButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { Dock, DockIcon } from "@/components/ui/dock";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -10,10 +9,9 @@ import { Separator } from "@/components/ui/separator";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import {
-  HomeIcon,
+  InfoIcon,
   UsersIcon,
   TrophyIcon,
-  InfoIcon,
   HelpCircleIcon,
   UserPlusIcon,
   LogIn,
@@ -23,9 +21,17 @@ import {
 } from "lucide-react";
 import { Github, Linkedin } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
-import { profile } from "node:console";
 
-const staticNavItems = [
+interface NavItem {
+  name: string;
+  href?: string;
+  icon: React.ElementType;
+  protected: boolean;
+  newTab?: boolean;
+  isAuth?: boolean;
+}
+
+const staticNavItems: NavItem[] = [
   { name: "About", href: "#about", icon: InfoIcon, protected: false },
   { name: "Tracks", href: "#tracks", icon: UsersIcon, protected: false },
   { name: "Sponsors", href: "#sponsors", icon: UsersIcon, protected: false },
@@ -41,20 +47,20 @@ const socialLinks = [
 ];
 
 const DockNavbar = () => {
-  const { isLoaded, userId } = useAuth();
+  const { userId } = useAuth();
   const isSignedIn = !!userId;
   const [menuOpen, setMenuOpen] = useState(false);
 
   // Auth nav item: if signed in, show "Profile" link; otherwise, show "Sign In" action.
-  const authNavItem = isSignedIn
+  const authNavItem: NavItem = isSignedIn
     ? { name: "Profile", href: "/profile", icon: User, protected: false }
     : { name: "Sign In", isAuth: true, icon: LogIn, protected: false };
 
-  const finalNavItems = [...staticNavItems, authNavItem];
+  const finalNavItems: NavItem[] = [...staticNavItems, authNavItem];
 
   return (
     <>
-      <nav className="fixed  w-full z-50 md:px-12 pb-2 bg-opacity-80 backdrop-blur-lg">
+      <nav className="fixed w-full z-50 md:px-12 pb-2 bg-opacity-80 backdrop-blur-lg">
         <div className="max-w-screen-xl mx-auto flex justify-between items-center">
           {/* Desktop: use Dock UI on md+ screens */}
           <div className="hidden md:flex w-full justify-between items-center">
@@ -81,7 +87,7 @@ const DockNavbar = () => {
                               </SignInButton>
                             ) : (
                               <Link
-                                href={item.href}
+                                href={item.href!}
                                 className={cn(
                                   buttonVariants({ variant: "ghost", size: "icon" }),
                                   "w-12 h-12 rounded-full opacity-90 hover:opacity-100 transition"
@@ -92,7 +98,7 @@ const DockNavbar = () => {
                             )
                           ) : (
                             <Link
-                              href={item.href}
+                              href={item.href!}
                               target={item.newTab ? "_blank" : undefined}
                               className={cn(
                                 buttonVariants({ variant: "ghost", size: "icon" }),
@@ -173,7 +179,7 @@ const DockNavbar = () => {
                       </SignInButton>
                     ) : (
                       <Link
-                        href={item.href}
+                        href={item.href!}
                         onClick={() => setMenuOpen(false)}
                         className="text-white text-2xl"
                       >
@@ -182,7 +188,7 @@ const DockNavbar = () => {
                     )
                   ) : (
                     <Link
-                      href={item.href}
+                      href={item.href!}
                       onClick={() => setMenuOpen(false)}
                       className="text-white text-2xl"
                     >
