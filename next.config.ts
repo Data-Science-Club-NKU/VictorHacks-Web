@@ -3,11 +3,10 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  output: "export", // 
   images: {
-    unoptimized: true, // ✅ Fix image errors when using GitHub Pages
+    unoptimized: true, 
   },
-  trailingSlash: true, // ✅ Helps GitHub Pages find static routes correctly
+  trailingSlash: true, 
 };
 
 module.exports = nextConfig;
