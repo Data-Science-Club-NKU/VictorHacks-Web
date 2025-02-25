@@ -25,6 +25,6 @@ export default function Page({ params }: Props) {
 }
 
 function isValidPage(slug: string): boolean {
-  const validPages = ["home", "about", "contact"];
+  const validPages = ["Apply", "Competitions"];
   return validPages.includes(slug);
 }
