@@ -4,9 +4,9 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    unoptimized: true, 
+    unoptimized: true,
   },
-  trailingSlash: true, 
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
