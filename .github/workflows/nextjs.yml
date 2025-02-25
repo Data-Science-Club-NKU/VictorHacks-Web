@@ -54,6 +54,9 @@ jobs:
       - name: Install dependencies
         run: ${{ env.manager }} ${{ env.command }}
 
+      - name: Check for funding information
+        run: npm fund
+
       - name: Build with Next.js
         env:  
           CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_PUBLISHABLE_KEY }}

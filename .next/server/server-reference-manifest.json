@@ -5,10 +5,30 @@
         "app/page": {
           "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
           "async": false
+        },
+        "app/Dashboard/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/competitions/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/_not-found/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/register/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
         }
       },
       "layer": {
-        "app/page": "rsc"
+        "app/page": "rsc",
+        "app/Dashboard/page": "rsc",
+        "app/competitions/page": "rsc",
+        "app/_not-found/page": "rsc",
+        "app/register/page": "rsc"
       }
     },
     "7f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef": {
@@ -16,10 +36,30 @@
         "app/page": {
           "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
           "async": false
+        },
+        "app/Dashboard/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/competitions/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/_not-found/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/register/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
         }
       },
       "layer": {
-        "app/page": "rsc"
+        "app/page": "rsc",
+        "app/Dashboard/page": "rsc",
+        "app/competitions/page": "rsc",
+        "app/_not-found/page": "rsc",
+        "app/register/page": "rsc"
       }
     },
     "7f77bb4a0b219ed3a929972a8090cc094dbe29fbf3": {
@@ -27,10 +67,30 @@
         "app/page": {
           "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
           "async": false
+        },
+        "app/Dashboard/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/competitions/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/_not-found/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
+        },
+        "app/register/page": {
+          "moduleId": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fkeyless-actions.js%22%2C%5B%5B%227f3488a31349119f50354aae7f95106e4e9cb63cf2%22%2C%22deleteKeylessAction%22%5D%2C%5B%227f6f7e73a1ec1b49e02aca88d9b58a5a7f15af69ef%22%2C%22syncKeylessConfigAction%22%5D%2C%5B%227f77bb4a0b219ed3a929972a8090cc094dbe29fbf3%22%2C%22createOrReadKeylessAction%22%5D%5D%5D%5D&__client_imported__=!",
+          "async": false
         }
       },
       "layer": {
-        "app/page": "rsc"
+        "app/page": "rsc",
+        "app/Dashboard/page": "rsc",
+        "app/competitions/page": "rsc",
+        "app/_not-found/page": "rsc",
+        "app/register/page": "rsc"
       }
     },
     "7f8b086a400a823a49623ec36cfbaaa30ade0cc395": {
@@ -38,10 +98,30 @@
         "app/page": {
           "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f8b086a400a823a49623ec36cfbaaa30ade0cc395%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
           "async": false
+        },
+        "app/Dashboard/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f8b086a400a823a49623ec36cfbaaa30ade0cc395%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/competitions/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f8b086a400a823a49623ec36cfbaaa30ade0cc395%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/_not-found/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f8b086a400a823a49623ec36cfbaaa30ade0cc395%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
+        },
+        "app/register/page": {
+          "moduleId": "(action-browser)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22%2FUsers%2Faadityakhanal%2FDesktop%2FVictorHacks-Web%2Fnode_modules%2F%40clerk%2Fnextjs%2Fdist%2Fesm%2Fapp-router%2Fserver-actions.js%22%2C%5B%5B%227f8b086a400a823a49623ec36cfbaaa30ade0cc395%22%2C%22invalidateCacheAction%22%5D%5D%5D%5D&__client_imported__=true!",
+          "async": false
         }
       },
       "layer": {
-        "app/page": "action-browser"
+        "app/page": "action-browser",
+        "app/Dashboard/page": "action-browser",
+        "app/competitions/page": "action-browser",
+        "app/_not-found/page": "action-browser",
+        "app/register/page": "action-browser"
       }
     }
   },
