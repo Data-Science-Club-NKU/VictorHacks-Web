@@ -28,7 +28,6 @@ interface NavItem {
   icon: React.ElementType;
   protected: boolean;
   newTab?: boolean;
-  isAuth?: boolean;
 }
 
 const staticNavItems: NavItem[] = [
@@ -51,10 +50,10 @@ const DockNavbar = () => {
   const isSignedIn = !!userId;
   const [menuOpen, setMenuOpen] = useState(false);
 
-  // Auth nav item: if signed in, show "Profile" link; otherwise, show "Sign In" action.
+  // For authentication: if signed in, show "Profile" with a link; otherwise, create an item without href.
   const authNavItem: NavItem = isSignedIn
     ? { name: "Profile", href: "/profile", icon: User, protected: false }
-    : { name: "Sign In", isAuth: true, icon: LogIn, protected: false };
+    : { name: "Sign In", icon: LogIn, protected: false };
 
   const finalNavItems: NavItem[] = [...staticNavItems, authNavItem];
 
@@ -67,14 +66,13 @@ const DockNavbar = () => {
             <TooltipProvider>
               <Dock direction="middle" className="flex justify-start items-center space-x-2">
                 {finalNavItems.map((item) => {
-                  // If the item is protected and user isn’t signed in, skip rendering.
+                  // Skip rendering items that are protected if the user isn’t signed in.
                   if (item.protected && !isSignedIn) return null;
                   return (
                     <DockIcon key={item.name}>
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          {item.isAuth ? (
-                            !isSignedIn ? (
+                          { !item.href ? (
                               <SignInButton mode="modal">
                                 <button
                                   className={cn(
@@ -87,7 +85,8 @@ const DockNavbar = () => {
                               </SignInButton>
                             ) : (
                               <Link
-                                href={item.href!}
+                                href={item.href}
+                                target={item.newTab ? "_blank" : undefined}
                                 className={cn(
                                   buttonVariants({ variant: "ghost", size: "icon" }),
                                   "w-12 h-12 rounded-full opacity-90 hover:opacity-100 transition"
@@ -96,18 +95,7 @@ const DockNavbar = () => {
                                 <item.icon className="w-5 h-5" />
                               </Link>
                             )
-                          ) : (
-                            <Link
-                              href={item.href!}
-                              target={item.newTab ? "_blank" : undefined}
-                              className={cn(
-                                buttonVariants({ variant: "ghost", size: "icon" }),
-                                "w-12 h-12 rounded-full opacity-90 hover:opacity-100 transition"
-                              )}
-                            >
-                              <item.icon className="w-5 h-5" />
-                            </Link>
-                          )}
+                          }
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>{item.name}</p>
@@ -167,8 +155,7 @@ const DockNavbar = () => {
               if (item.protected && !isSignedIn) return null;
               return (
                 <div key={item.name}>
-                  {item.isAuth ? (
-                    !isSignedIn ? (
+                  { !item.href ? (
                       <SignInButton mode="modal">
                         <button
                           onClick={() => setMenuOpen(false)}
@@ -179,22 +166,14 @@ const DockNavbar = () => {
                       </SignInButton>
                     ) : (
                       <Link
-                        href={item.href!}
+                        href={item.href}
                         onClick={() => setMenuOpen(false)}
                         className="text-white text-2xl"
                       >
                         {item.name}
                       </Link>
                     )
-                  ) : (
-                    <Link
-                      href={item.href!}
-                      onClick={() => setMenuOpen(false)}
-                      className="text-white text-2xl"
-                    >
-                      {item.name}
-                    </Link>
-                  )}
+                  }
                 </div>
               );
             })}
