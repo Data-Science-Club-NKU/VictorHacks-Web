@@ -1,19 +1,22 @@
 import { NextRequest, NextResponse } from "next/server";
-import fs from "fs";
-import path from "path";
 import { parse } from "papaparse";
+
+// Define a type for CSV rows
+interface CSVRow {
+    Rings: number;
+}
 
 // Function to calculate RMSE
 function calculateRMSE(actual: number[], predicted: number[]): number {
     if (actual.length !== predicted.length) {
         throw new Error("The uploaded CSV and the correct output must have the same number of rows.");
     }
-    
+
     const mse = actual.reduce((sum, actualValue, index) => {
         const predictedValue = predicted[index];
         return sum + Math.pow(actualValue - predictedValue, 2);
     }, 0) / actual.length;
-    
+
     return Math.sqrt(mse);
 }
 
@@ -21,29 +24,28 @@ export async function POST(req: NextRequest) {
     try {
         const formData = await req.formData();
         const file = formData.get("file");
-        
+
         if (!(file instanceof Blob)) {
             return NextResponse.json({ error: "Invalid file upload" }, { status: 400 });
         }
 
-        // Read the uploaded file as text
+        // Convert uploaded file to text
         const uploadedText = await file.text();
-        const uploadedData = parse(uploadedText, { header: true }).data;
+        const uploadedData: CSVRow[] = parse<CSVRow>(uploadedText, { header: true, dynamicTyping: true }).data;
 
-        // Read the locally stored correct output CSV
-        const correctFilePath = path.join(process.cwd(), "app", "competitions", "tabs", "data", "Correct_output_to_validate.csv");
-        if (!fs.existsSync(correctFilePath)) {
-            return NextResponse.json({ error: "Correct output file not found" }, { status: 500 });
-        }
-        const correctText = fs.readFileSync(correctFilePath, "utf-8");
-        const correctData = parse(correctText, { header: true }).data;
+        // 🔥 Fetch the correct reference CSV from an API or database instead of `fs`
+        const correctFileUrl = "https://your-api.com/correct_output.csv"; // ✅ Replace with actual source
+        const correctResponse = await fetch(correctFileUrl);
+        const correctText = await correctResponse.text();
+        const correctData: CSVRow[] = parse<CSVRow>(correctText, { header: true, dynamicTyping: true }).data;
 
-        // Convert to numerical arrays using the 'Rings' column
-        const uploadedValues = uploadedData
-            .map((row: any) => parseFloat(row.Rings))
+        // Convert CSV data into numerical arrays using 'Rings' column
+        const uploadedValues: number[] = uploadedData
+            .map((row) => row.Rings)
             .filter((val) => !isNaN(val));
-        const correctValues = correctData
-            .map((row: any) => parseFloat(row.Rings))
+
+        const correctValues: number[] = correctData
+            .map((row) => row.Rings)
             .filter((val) => !isNaN(val));
 
         if (uploadedValues.length === 0 || correctValues.length === 0) {
