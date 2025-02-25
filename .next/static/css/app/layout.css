@@ -593,6 +593,12 @@ body{
 .top-4{
   top: 1rem;
 }
+.top-16{
+  top: 4rem;
+}
+.right-0{
+  right: 0px;
+}
 .-z-10{
   z-index: -10;
 }
@@ -680,6 +686,9 @@ body{
 }
 .mt-8{
   margin-top: 2rem;
+}
+.mb-12{
+  margin-bottom: 3rem;
 }
 .flex{
   display: flex;
@@ -779,6 +788,12 @@ body{
 .h-screen{
   height: 100vh;
 }
+.h-12{
+  height: 3rem;
+}
+.h-5{
+  height: 1.25rem;
+}
 .max-h-96{
   max-height: 24rem;
 }
@@ -832,6 +847,12 @@ body{
 }
 .w-max{
   width: max-content;
+}
+.w-12{
+  width: 3rem;
+}
+.w-5{
+  width: 1.25rem;
 }
 .min-w-10{
   min-width: 2.5rem;
@@ -1181,11 +1202,28 @@ body{
   --tw-bg-opacity: 1;
   background-color: rgb(113 113 122 / var(--tw-bg-opacity, 1));
 }
+.bg-black\/80{
+  background-color: rgb(0 0 0 / 0.8);
+}
+.bg-black\/90{
+  background-color: rgb(0 0 0 / 0.9);
+}
+.bg-gray-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(75 85 99 / var(--tw-bg-opacity, 1));
+}
+.bg-black{
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity, 1));
+}
 .bg-opacity-60{
   --tw-bg-opacity: 0.6;
 }
 .bg-opacity-80{
   --tw-bg-opacity: 0.8;
+}
+.bg-opacity-70{
+  --tw-bg-opacity: 0.7;
 }
 .bg-gradient-to-b{
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
@@ -1324,6 +1362,10 @@ body{
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+.px-32{
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
 .pb-4{
   padding-bottom: 1rem;
 }
@@ -1341,6 +1383,12 @@ body{
 }
 .pt-8{
   padding-top: 2rem;
+}
+.pb-12{
+  padding-bottom: 3rem;
+}
+.pb-2{
+  padding-bottom: 0.5rem;
 }
 .text-left{
   text-align: left;
@@ -1520,6 +1568,10 @@ body{
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity, 1));
 }
+.text-gray-500{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity, 1));
+}
 .underline{
   text-decoration-line: underline;
 }
@@ -1585,6 +1637,11 @@ body{
 }
 .backdrop-blur-md{
   --tw-backdrop-blur: blur(12px);
+  -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+  backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+}
+.backdrop-blur-lg{
+  --tw-backdrop-blur: blur(16px);
   -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
   backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
@@ -1893,6 +1950,13 @@ h1,p {
 .hover\:text-white:hover{
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity, 1));
+}
+
+
+
+.hover\:text-gray-600:hover{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity, 1));
 }
 
 
@@ -2224,6 +2288,9 @@ h1,p {
   .md\:flex{
     display: flex;
   }
+  .md\:hidden{
+    display: none;
+  }
   .md\:grid-cols-3{
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2232,6 +2299,22 @@ h1,p {
   }
   .md\:p-8{
     padding: 2rem;
+  }
+  .md\:px-56{
+    padding-left: 14rem;
+    padding-right: 14rem;
+  }
+  .md\:px-24{
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+  .md\:px-5{
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+  .md\:px-12{
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
   .md\:text-3xl{
     font-size: 1.875rem;
@@ -2254,11 +2337,24 @@ h1,p {
     margin-left: 0.625rem;
     margin-right: 0.625rem;
   }
+  .lg\:block{
+    display: block;
+  }
+  .lg\:flex{
+    display: flex;
+  }
+  .lg\:hidden{
+    display: none;
+  }
   .lg\:grid-cols-2{
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
   .lg\:p-10{
     padding: 2.5rem;
+  }
+  .lg\:px-56{
+    padding-left: 14rem;
+    padding-right: 14rem;
   }
   .lg\:text-4xl{
     font-size: 2.25rem;
