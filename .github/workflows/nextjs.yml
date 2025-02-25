@@ -49,6 +49,7 @@ jobs:
         run: ${{ env.manager }} ${{ env.command }}
 
       - name: Build with Next.js
+        env:  CLERK_PUBLISHABLE_KEY: ${{secrets.CLERK_PUBLISHABLE_KEY }}
         run: ${{ env.runner }} next build
 
       - name: Upload artifact
