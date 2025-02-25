@@ -1,19 +1,30 @@
-import { redirect } from "next/navigation";
+"use client"; // ✅ Ensure this is a Client Component
 
-interface PageProps {
-  params: { slug: string };
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
+
+interface Props {
+  params: { slug?: string };
 }
 
-export default function Page({ params }: PageProps) {
-  if (!isValidPage(params.slug)) {
-    redirect("../_not-found.tsx"); // ✅ Redirect to custom 404 page
+export default function Page({ params }: Props) {
+  const router = useRouter();
+  const slug = params.slug ?? ""; // Ensure slug is always a string
+
+  useEffect(() => {
+    if (!isValidPage(slug)) {
+      router.push("/not-found"); // 
+    }
+  }, [slug, router]);
+
+  if (!isValidPage(slug)) {
+    return null; // 
   }
 
-  return <div>Valid Page: {params.slug}</div>;
+  return <div>Valid Page: {slug}</div>;
 }
 
 function isValidPage(slug: string): boolean {
-  // Example validation logic
   const validPages = ["home", "about", "contact"];
   return validPages.includes(slug);
 }
