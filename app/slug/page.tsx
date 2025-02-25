@@ -1,13 +1,18 @@
 import { redirect } from "next/navigation";
 
-export default function Page({ params }: { params: { slug: string } }) {
+interface PageProps {
+  params: { slug: string };
+}
+
+export default function Page({ params }: PageProps) {
   if (!isValidPage(params.slug)) {
-    redirect("/app/_not-found.tsx"); 
+    redirect("../_not-found.tsx"); // ✅ Redirect to custom 404 page
   }
+
   return <div>Valid Page: {params.slug}</div>;
 }
 
-function isValidPage(slug: string) {
+function isValidPage(slug: string): boolean {
   // Example validation logic
   const validPages = ["home", "about", "contact"];
   return validPages.includes(slug);
