@@ -41,7 +41,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: "npm"
+          cache: ${{ env.manager }}
 
       - name: Restore Node.js Cache
         uses: actions/cache@v4
@@ -57,12 +57,14 @@ jobs:
       - name: Build with Next.js
         env:  
           CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_PUBLISHABLE_KEY }}
-        run: ${{ env.runner }} next build
+        run: |
+          ${{ env.runner }} next build
+          ${{ env.runner }} next export  # Ensures `out/` exists for GitHub Pages
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out  # If `out` doesn't exist, use `.next`
+          path: ./out  # Ensure it's set correctly for GitHub Pages
 
   deploy:
     environment:
