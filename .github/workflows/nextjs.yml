@@ -52,6 +52,8 @@ jobs:
             node-cache-${{ runner.os }}-npm-
 
       - name: Install dependencies
+        env:
+          CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_PUBLISHABLE_KEY }} # ✅ Ensure secret is available
         run: ${{ env.manager }} ${{ env.command }}
 
       - name: Check for funding information
@@ -59,7 +61,7 @@ jobs:
 
       - name: Build with Next.js
         env:  
-          CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_PUBLISHABLE_KEY }}
+          CLERK_PUBLISHABLE_KEY: ${{ secrets.CLERK_PUBLISHABLE_KEY }} # ✅ Ensure secret is available during build
         run: |
           ${{ env.runner }} next build
           ${{ env.runner }} next export  # Ensures `out/` exists for GitHub Pages
