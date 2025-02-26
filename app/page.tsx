@@ -15,10 +15,10 @@ export default function Home(): JSX.Element {
       <DockNavbar />
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Victor Hacks 2024</title>
+        <title>Victor Hacks 2025</title>
         <meta
           name="description"
-          content="Victor Hacks 2024: A Hackathon Fit for Vikings"
+          content="Victor Hacks 2025: A Hackathon Fit for Vikings"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
