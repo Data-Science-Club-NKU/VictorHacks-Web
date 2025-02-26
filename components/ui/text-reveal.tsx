@@ -1,55 +1,135 @@
 "use client";
 
-import { motion, MotionValue, useScroll, useTransform } from "motion/react";
-import { ComponentPropsWithoutRef, FC, ReactNode, useRef } from "react";
-import { cn } from "@/lib/utils";
+import { useEffect, useRef, useMemo } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
-  text: string;
+gsap.registerPlugin(ScrollTrigger);
+
+interface ScrollRevealProps {
+  children: string;
+  scrollContainerRef?: React.RefObject<HTMLElement>;
+  enableBlur?: boolean;
+  baseOpacity?: number;
+  baseRotation?: number;
+  blurStrength?: number;
+  containerClassName?: string;
+  textClassName?: string;
+  rotationEnd?: string;
+  wordAnimationEnd?: string;
 }
 
-export const TextReveal: FC<TextRevealProps> = ({ text, className }) => {
-  const targetRef = useRef<HTMLDivElement | null>(null);
-  const { scrollYProgress } = useScroll({ target: targetRef });
-  const words = text.split(" ");
+const ScrollReveal: React.FC<ScrollRevealProps> = ({
+  children,
+  scrollContainerRef,
+  enableBlur = true,
+  baseOpacity = 0.1,
+  baseRotation = 3,
+  blurStrength = 4,
+  containerClassName = "",
+  textClassName = "",
+  rotationEnd = "bottom bottom",
+  wordAnimationEnd = "bottom bottom",
+}) => {
+  const containerRef = useRef<HTMLHeadingElement | null>(null);
+
+  // Split the text into words and wrap each word with a span that has the "word" class
+  const splitText = useMemo(() => {
+    return children.split(/(\s+)/).map((word, index) => {
+      if (word.match(/^\s+$/)) return word;
+      return (
+        <span className="inline-block word" key={index}>
+          {word}
+        </span>
+      );
+    });
+  }, [children]);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const scroller =
+      scrollContainerRef && scrollContainerRef.current
+        ? scrollContainerRef.current
+        : window;
+
+    // Rotate animation
+    gsap.fromTo(
+      el,
+      { transformOrigin: '0% 50%', rotate: baseRotation },
+      {
+        ease: 'none',
+        rotate: 0,
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: 'top bottom',
+          end: rotationEnd,
+          scrub: true,
+        },
+      }
+    );
+
+    // Word opacity animation
+    const wordElements = el.querySelectorAll('.word');
+    gsap.fromTo(
+      wordElements,
+      { opacity: baseOpacity, willChange: 'opacity' },
+      {
+        ease: 'none',
+        opacity: 1,
+        stagger: 0.05,
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: 'top bottom-=20%',
+          end: wordAnimationEnd,
+          scrub: true,
+        },
+      }
+    );
+
+    // Optional blur animation
+    if (enableBlur) {
+      gsap.fromTo(
+        wordElements,
+        { filter: `blur(${blurStrength}px)` },
+        {
+          ease: 'none',
+          filter: 'blur(0px)',
+          stagger: 0.05,
+          scrollTrigger: {
+            trigger: el,
+            scroller,
+            start: 'top bottom-=20%',
+            end: wordAnimationEnd,
+            scrub: true,
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, [
+    scrollContainerRef,
+    enableBlur,
+    baseRotation,
+    baseOpacity,
+    rotationEnd,
+    wordAnimationEnd,
+    blurStrength,
+  ]);
 
   return (
-    <div ref={targetRef} className={cn("relative z-0 h-[40vh]", className)}>
-      <div className="sticky top-0 flex h-full items-center bg-transparent overflow-hidden px-4">
-        <p
-          className={
-            "flex flex-wrap font-medium text-xl sm:text-3xl md:text-4xl lg:text-5xl whitespace-nowrap font-Tomorrow text-black/20 dark:text-white/20"
-          }
-        >
-          {words.map((word, i) => {
-            const start = i / words.length;
-            const end = start + 1 / words.length;
-            return (
-              <Word key={i} progress={scrollYProgress} range={[start, end]}>
-                {word}
-              </Word>
-            );
-          })}
-        </p>
-      </div>
-    </div>
+    <h2 ref={containerRef} className={`my-64 mx-24 ${containerClassName}`}>
+      <p className={`text-[clamp(1.6rem,4vw,3rem)] leading-[1.5] font-semibold ${textClassName}`}>
+        {splitText}
+      </p>
+    </h2>
   );
 };
 
-interface WordProps {
-  children: ReactNode;
-  progress: MotionValue<number>;
-  range: [number, number];
-}
-
-const Word: FC<WordProps> = ({ children, progress, range }) => {
-  const opacity = useTransform(progress, range, [0, 1]);
-  return (
-    <span className="relative mx-1 sm:mx-2">
-      <span className="absolute opacity-30">{children}</span>
-      <motion.span style={{ opacity }} className="text-black dark:text-white">
-        {children}&nbsp;
-      </motion.span>
-    </span>
-  );
-};
+export default ScrollReveal;

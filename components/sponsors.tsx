@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 // import { Marquee } from "./ui/marquee";
-import { TextReveal } from "@/components/ui/text-reveal";
+import ScrollReveal from "@/components/ui/text-reveal";
 import { PulsatingButton } from "./ui/pulsating-button";
 
 // const sponsors = [
@@ -53,19 +53,29 @@ export function Sponsors() {
       <h1 className="mt-8 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-Tomorrow font-light uppercase text-gray-900 dark:text-white">
         SPONSORS
       </h1>
-     {/* <Marquee pauseOnHover className="[--duration:10s] pt-8 mt-20">
+      {/* <Marquee pauseOnHover className="[--duration:10s] pt-8 mt-20">
         {sponsors.map((sponsor) => (
           <SponsorCard key={sponsor.name} {...sponsor} />
         ))}
       </Marquee> */}
       <div className="text-center p-8 mb-2">
         <PulsatingButton className="w-fit px-6 py-2 mt-20 rounded-md mx-auto">
-                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdEPBSPX4vkd1ks_YSnUGZD6PTcYqnCpgCylNRDot0kwKdEMg/viewform?usp=dialog">Apply Now</a>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSdEPBSPX4vkd1ks_YSnUGZD6PTcYqnCpgCylNRDot0kwKdEMg/viewform?usp=dialog"
+            target="_blank"
+          >
+            Apply Now
+          </a>
         </PulsatingButton>
-        <TextReveal
-          text="🚀 Fuel Innovation, Empower Talent! Sponsor Victor Hacks and connect with the brightest minds shaping the future of tech."
+        <ScrollReveal
+          baseOpacity={0}
+          enableBlur={true}
+          baseRotation={5}
+          blurStrength={10}
           className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 dark:text-gray-300 mt-24"
-        />
+        >
+          🚀 Fuel Innovation, Empower Talent! Sponsor Victor Hacks and connect with the brightest minds shaping the future of tech.
+        </ScrollReveal>
       </div>
     </div>
   );
