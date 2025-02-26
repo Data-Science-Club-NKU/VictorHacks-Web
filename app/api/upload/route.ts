@@ -1,62 +1,53 @@
 import { NextRequest, NextResponse } from "next/server";
+import fs from "fs";
+import path from "path";
 import { parse } from "papaparse";
-
-// Define a type for CSV rows
-interface CSVRow {
-    Rings: number;
-}
 
 // Function to calculate RMSE
 function calculateRMSE(actual: number[], predicted: number[]): number {
     if (actual.length !== predicted.length) {
         throw new Error("The uploaded CSV and the correct output must have the same number of rows.");
     }
-
+    
     const mse = actual.reduce((sum, actualValue, index) => {
         const predictedValue = predicted[index];
         return sum + Math.pow(actualValue - predictedValue, 2);
     }, 0) / actual.length;
-
+    
     return Math.sqrt(mse);
 }
 
 export async function POST(req: NextRequest) {
     try {
         const formData = await req.formData();
-        const file = formData.get("file");
-
-        if (!(file instanceof Blob)) {
-            return NextResponse.json({ error: "Invalid file upload" }, { status: 400 });
+        const file = formData.get("file") as File;
+        
+        if (!file) {
+            return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
         }
 
-        // Convert uploaded file to text
+        // Read the uploaded file as text
         const uploadedText = await file.text();
-        const uploadedData: CSVRow[] = parse<CSVRow>(uploadedText, { header: true, dynamicTyping: true }).data;
+        const uploadedData = parse(uploadedText, { header: true }).data;  // Set header: true
 
-        // 🔥 Fetch the correct reference CSV from an API or database instead of `fs`
-        const correctFileUrl = "https://your-api.com/correct_output.csv"; // ✅ Replace with actual source
-        const correctResponse = await fetch(correctFileUrl);
-        const correctText = await correctResponse.text();
-        const correctData: CSVRow[] = parse<CSVRow>(correctText, { header: true, dynamicTyping: true }).data;
+        // Read the locally stored correct output CSV
+        const correctFilePath = path.join(process.cwd(), "app", "competitions", "tabs", "data", "Correct_output_to_validate.csv");
+        const correctText = fs.readFileSync(correctFilePath, "utf-8");
+        const correctData = parse(correctText, { header: true }).data;  // Set header: true
 
-        // Convert CSV data into numerical arrays using 'Rings' column
-        const uploadedValues: number[] = uploadedData
-            .map((row) => row.Rings)
-            .filter((val) => !isNaN(val));
-
-        const correctValues: number[] = correctData
-            .map((row) => row.Rings)
-            .filter((val) => !isNaN(val));
-
-        if (uploadedValues.length === 0 || correctValues.length === 0) {
-            return NextResponse.json({ error: "No valid numerical data found in the uploaded or reference CSV." }, { status: 400 });
-        }
+        // Convert to numerical arrays using the 'Rings' column
+        const uploadedValues = uploadedData
+            .map((row: any) => parseFloat(row.Rings))
+            .filter(val => !isNaN(val));
+        const correctValues = correctData
+            .map((row: any) => parseFloat(row.Rings))
+            .filter(val => !isNaN(val));
 
         // Calculate RMSE
         const rmse = calculateRMSE(correctValues, uploadedValues);
         console.log("RMSE Score:", rmse);
 
-        return NextResponse.json({ message: "File received successfully", rmse });
+        return NextResponse.json({ message: "File received successfully", rmse: rmse });
     } catch (error) {
         console.error("Error processing file upload:", error);
         return NextResponse.json({ error: "Internal server error" }, { status: 500 });

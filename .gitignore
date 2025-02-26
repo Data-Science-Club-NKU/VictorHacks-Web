@@ -3,3 +3,7 @@
 # clerk configuration (can include secrets)
 /.clerk/
 .env
+.env.local
+.next/
+out/
+.cache/

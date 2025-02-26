@@ -1,4 +1,4 @@
-// File: /Users/aadityakhanal/Desktop/VictorHacks-Web/app/page.tsx
+// File: /Users/sushantshrestha/Developer/VictorHacks-Web_v2/app/page.tsx
 import * as entry from '../../../app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 
