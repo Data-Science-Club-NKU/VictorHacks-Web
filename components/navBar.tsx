@@ -19,7 +19,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { Github, Linkedin } from "lucide-react";
+import { Instagram } from "lucide-react";
 import { FaDiscord } from "react-icons/fa";
 
 interface NavItem {
@@ -40,8 +40,7 @@ const staticNavItems: NavItem[] = [
 ];
 
 const socialLinks = [
-  { name: "GitHub", href: "#", icon: Github },
-  { name: "LinkedIn", href: "#", icon: Linkedin },
+  { name: "LinkedIn", href: "#", icon: Instagram },
   { name: "Discord", href: "#", icon: FaDiscord },
 ];
 
@@ -59,12 +58,12 @@ const DockNavbar = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-50 md:px-12 pb-2 bg-opacity-80 backdrop-blur-lg">
+      <nav className="fixed w-full z-50 md:px-12 pb-2">
         <div className="max-w-screen-xl mx-auto flex justify-between items-center">
           {/* Desktop: use Dock UI on md+ screens */}
           <div className="hidden md:flex w-full justify-between items-center">
             <TooltipProvider>
-              <Dock direction="middle" className="flex justify-start items-center space-x-2">
+              <Dock direction="middle" className="flex justify-start items-center space-x-2 text-white">
                 {finalNavItems.map((item) => {
                   // Skip rendering items that are protected if the user isn’t signed in.
                   if (item.protected && !isSignedIn) return null;
@@ -130,15 +129,19 @@ const DockNavbar = () => {
           </div>
 
           {/* Mobile: Hamburger menu on smaller screens */}
-          <div className="md:hidden flex items-center justify-between w-full">
-            <div className="text-white text-xl font-bold">Logo</div>
-            <button
-              onClick={() => setMenuOpen(!menuOpen)}
-              className="text-white focus:outline-none"
-            >
-              {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+<div className="md:hidden flex items-center justify-between w-full p-2">
+  <img
+    src="https://png.pngtree.com/png-clipart/20240923/original/pngtree-viking-warrior-head-logo-png-image_16075099.png"
+    alt="Viking Logo"
+    className="w-16 h-16 opacity-80"
+  />
+  <button
+    onClick={() => setMenuOpen(!menuOpen)}
+    className="text-white focus:outline-none"
+  >
+    {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+  </button>
+</div>
         </div>
       </nav>
 

@@ -2,7 +2,6 @@
 
 import { motion, MotionValue, useScroll, useTransform } from "motion/react";
 import { ComponentPropsWithoutRef, FC, ReactNode, useRef } from "react";
-
 import { cn } from "@/lib/utils";
 
 export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
@@ -11,23 +10,15 @@ export interface TextRevealProps extends ComponentPropsWithoutRef<"div"> {
 
 export const TextReveal: FC<TextRevealProps> = ({ text, className }) => {
   const targetRef = useRef<HTMLDivElement | null>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-  });
+  const { scrollYProgress } = useScroll({ target: targetRef });
   const words = text.split(" ");
 
   return (
     <div ref={targetRef} className={cn("relative z-0 h-[40vh]", className)}>
-      <div
-        className={
-          "sticky top-0 flex h-[50%] items-center bg-transparent overflow-hidden"
-        }
-      >
+      <div className="sticky top-0 flex h-full items-center bg-transparent overflow-hidden px-4">
         <p
-          ref={targetRef}
           className={
-            "flex flex-wrap font-medium text-5xl whitespace-nowrap font-Tomorrow text-black/20 dark:text-white/20 md:p-8 md:text-3xl lg:p-10 lg:text-4xl xl:text-5xl"
+            "flex flex-wrap font-medium text-xl sm:text-3xl md:text-4xl lg:text-5xl whitespace-nowrap font-Tomorrow text-black/20 dark:text-white/20"
           }
         >
           {words.map((word, i) => {
@@ -54,13 +45,10 @@ interface WordProps {
 const Word: FC<WordProps> = ({ children, progress, range }) => {
   const opacity = useTransform(progress, range, [0, 1]);
   return (
-    <span className="xl:lg-3 relative mx-1 lg:mx-2.5">
-      <span className={"absolute opacity-30"}>{children}</span>
-      <motion.span
-        style={{ opacity: opacity }}
-        className={"text-black dark:text-white"}
-      >
-        {children}
+    <span className="relative mx-1 sm:mx-2">
+      <span className="absolute opacity-30">{children}</span>
+      <motion.span style={{ opacity }} className="text-black dark:text-white">
+        {children}&nbsp;
       </motion.span>
     </span>
   );

@@ -1,35 +1,34 @@
 import { cn } from "@/lib/utils";
-import { Marquee } from "./ui/marquee";
+// import { Marquee } from "./ui/marquee";
 import { TextReveal } from "@/components/ui/text-reveal";
 import { PulsatingButton } from "./ui/pulsating-button";
 
-
-const sponsors = [
-  {
-    name: "Google",
-    img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
-  },
-  {
-    name: "Microsoft",
-    img: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
-  },
-  {
-    name: "Amazon",
-    img: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
-  },
-  {
-    name: "Tesla",
-    img: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",
-  },
-  {
-    name: "Facebook",
-    img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
-  },
-  {
-    name: "Netflix",
-    img: "https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg",
-  },
-];
+// const sponsors = [
+//   {
+//     name: "Google",
+//     img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+//   },
+//   {
+//     name: "Microsoft",
+//     img: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg",
+//   },
+//   {
+//     name: "Amazon",
+//     img: "https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg",
+//   },
+//   {
+//     name: "Tesla",
+//     img: "https://upload.wikimedia.org/wikipedia/commons/e/e8/Tesla_logo.png",
+//   },
+//   {
+//     name: "Facebook",
+//     img: "https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg",
+//   },
+//   {
+//     name: "Netflix",
+//     img: "https://upload.wikimedia.org/wikipedia/commons/6/69/Netflix_logo.svg",
+//   },
+// ];
 
 const SponsorCard = ({ img, name }: { img: string; name: string }) => {
   return (
@@ -59,13 +58,13 @@ export function Sponsors() {
           <SponsorCard key={sponsor.name} {...sponsor} />
         ))}
       </Marquee> */}
-      <div className=" text-center p-8 mb-2">
+      <div className="text-center p-8 mb-2">
         <PulsatingButton className="w-fit px-6 py-2 mt-20 rounded-md mx-auto">
                   <a href="https://docs.google.com/forms/d/e/1FAIpQLSdEPBSPX4vkd1ks_YSnUGZD6PTcYqnCpgCylNRDot0kwKdEMg/viewform?usp=dialog">Apply Now</a>
         </PulsatingButton>
         <TextReveal
           text="🚀 Fuel Innovation, Empower Talent! Sponsor Victor Hacks and connect with the brightest minds shaping the future of tech."
-          className=" text-gray-800 dark:text-gray-300 mt-24"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 dark:text-gray-300 mt-24"
         />
       </div>
     </div>

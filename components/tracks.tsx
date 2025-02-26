@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useState, useEffect } from "react";
 import { FlickeringGrid } from "./ui/flickering-grid";
@@ -28,12 +28,12 @@ const tracks = [
 ];
 
 const Tracks = (): JSX.Element => {
-  // Optional: Dynamically hide orbiting circles based on screen size
+  // Dynamically hide orbiting circles based on screen size
   const [showOrbitingCircles, setShowOrbitingCircles] = useState(true);
 
   useEffect(() => {
     const handleResize = () => {
-      setShowOrbitingCircles(window.innerWidth >= 640); // Hide on small screens
+      setShowOrbitingCircles(window.innerWidth >= 640); // Hide on extra small screens
     };
 
     handleResize(); // Check on mount
@@ -52,15 +52,17 @@ const Tracks = (): JSX.Element => {
           color="#60A5FA"
           maxOpacity={0.3}
           flickerChance={0.1}
-          height={1000} // Keep grid height small for horizontal focus
-          width={2000} // Ensure it spans the entire width
+          height={1000} // Keeps grid height small for horizontal focus
+          width={2000} // Ensures it spans the entire width
         />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 flex flex-col items-center text-center text-white px-2 mr-12">
-        <h1 className="text-5xl font-light font-Tomorrow bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black mb-10">TRACKS</h1>
-        <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl w-full px-10">
+      <div className="relative z-10 flex flex-col items-center text-center text-white px-4 mr-0 md:mr-12">
+        <h1 className="text-5xl font-light font-Tomorrow bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black mb-10">
+          TRACKS
+        </h1>
+        <div className="flex flex-col md:flex-row justify-between items-center max-w-7xl w-full px-4 md:px-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-10 flex-grow">
             {tracks.map((track, index) => (
               <div
@@ -73,11 +75,11 @@ const Tracks = (): JSX.Element => {
             ))}
           </div>
 
-          {/* Orbiting Circles - Hide on small screens */}
+          {/* Orbiting Circles - Hide on extra small screens */}
           {showOrbitingCircles && (
-            <div className="hidden sm:flex justify-center items-center w-[400px] h-[400px] relative px-24 ml-40">
-              <div className="absolute w-[280px] h-[280px] border-gray-600 rounded-full flex items-center justify-center">
-                <span className="text-4xl pl-2 font-bold bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black">
+            <div className="hidden sm:flex justify-center items-center w-[300px] sm:w-[400px] h-[300px] sm:h-[400px] relative px-4 md:px-8 ml-0 md:ml-40 mt-10 md:mt-0">
+              <div className="absolute w-[90%] h-[30%] border border-gray-600 rounded-full flex items-center justify-center">
+                <span className="text-2xl sm:text-4xl font-bold bg-gradient-to-b from-black to-gray-400 bg-clip-text text-transparent dark:from-white dark:to-black">
                   Build & Innovate
                 </span>
               </div>

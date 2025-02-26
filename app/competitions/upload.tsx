@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { Button } from "@nextui-org/react";
+import { Button, Card, CardBody } from "@nextui-org/react";
 import { Upload } from "lucide-react";
 
 interface FileUploadProps {
@@ -23,7 +23,7 @@ export default function FileUpload({ onFileSelect }: FileUploadProps) {
   };
 
   const handleButtonClick = () => {
-    fileInputRef.current?.click(); // Manually trigger file input click
+    fileInputRef.current?.click();
   };
 
   const handleSubmission = async () => {
@@ -54,20 +54,44 @@ export default function FileUpload({ onFileSelect }: FileUploadProps) {
   };
 
   return (
-    <div className="flex items-center gap-4">
-      <input
-        type="file"
-        ref={fileInputRef}
-        className="hidden"
-        onChange={handleFileChange}
-        accept=".csv"
-      />
-      <Button color="default" variant="flat" startContent={<Upload size={20} />} onClick={handleButtonClick}>
-        {selectedFile ? selectedFile.name : "Choose File"}
-      </Button>
-      <Button color="primary" onClick={handleSubmission} disabled={!selectedFile}>
-        Submit Solution
-      </Button>
-    </div>
+    <Card className="max-w-md w-full sm:w-auto dark:bg-slate-900/70 mx-4 my-2">
+      <CardBody className="flex flex-col gap-4 sm:flex-row sm:items-center p-4">
+        {/* Hidden file input */}
+        <input
+          type="file"
+          ref={fileInputRef}
+          className="hidden"
+          onChange={handleFileChange}
+          accept=".csv"
+        />
+
+        {/* Choose File Button */}
+        <Button
+          variant="flat"
+          startContent={<Upload size={20} />}
+          onClick={handleButtonClick}
+          className="bg-transparent text-black dark:text-white hover:bg-transparent transition-colors"
+        >
+          {selectedFile ? selectedFile.name : "Choose File"}
+        </Button>
+
+        {/* Submit Button */}
+        <Button
+          color="primary"
+          onClick={handleSubmission}
+          disabled={!selectedFile}
+          className="bg-gray-200 hover:bg-black hover:text-white text-indigo-600 dark:text-indigo-400 transition-colors rounded-full"
+        >
+          Submit Solution
+        </Button>
+
+        {/* Selected File Info (optional) */}
+        {selectedFile && (
+          <p className="text-sm text-gray-600 dark:text-gray-300 sm:ml-2 sm:mt-0 mt-1">
+            Selected: <span className="font-medium">{selectedFile.name}</span>
+          </p>
+        )}
+      </CardBody>
+    </Card>
   );
 }
