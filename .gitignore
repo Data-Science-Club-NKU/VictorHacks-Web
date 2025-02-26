@@ -4,3 +4,6 @@
 /.clerk/
 .env
 .env.local
+.next/
+out/
+.cache/
